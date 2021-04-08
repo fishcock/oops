@@ -1,23 +1,22 @@
-from discord.ext import commands
 import discord
+import os
+from discord.ext import commands
+from discord.utils import get
+from dotenv import load_dotenv
+load_dotenv()
+import requests
+import json
 import time
+import schedule
 import calendar
 import random
 import asyncio
 from time import gmtime
 from time import time, ctime
 from time import struct_time
+import numpy as np
 
-
-client = commands.Bot(command_prefix="~")
-
-@client.command()
-async def test(ctx):
-    pass
-
-@client.command()
-async def bababooey(ctx, arg):
-    await ctx.send(arg)
+client = commands.Bot(command_prefix='~')
 
 @client.event
 async def on_message(message):
@@ -25,134 +24,214 @@ async def on_message(message):
     return
  channel = message.channel
 
- if message.content.startswith('yo ') or message.content.startswith('YO '):
-    await channel.send('shut yo dumbass up\nion give a shit')
- elif message.content.startswith('play'):
-    split = message.content.split(' ')
-    message = " ".join(split[1:])
-    await client.change_presence(activity=discord.Game(name=message))
-    print("Playing " + message)
- elif 'ddlc' in message.content or 'doki doki' in message.content:
-    await client.change_presence(activity=discord.Game(name='ITS NOT SAFE'))
-    await asyncio.sleep(5)
-    print("I still love you, you know.")
-    await client.change_presence(activity=discord.Game(name='SHES HERE'))
-    await asyncio.sleep(2)
-    await channel.send('FUCK, she\'s taking ov-')
-    await asyncio.sleep(3)
-    message = await channel.send('H')
-    await message.edit(content='Hey')
-    await message.edit(content='Hey t')
-    await message.edit(content='Hey the')
-    await message.edit(content='Hey there,')
-    await message.edit(content='Hey there, <@369150781556785162>! ')
-    await channel.send('I tho')
-    await message.edit(content='I thought th')
-    await message.edit(content='I thought that I\'d che')
-    await message.edit(content='I thought that I\'d check up ')
-    await message.edit(content='I thought that I\'d check up on')
-    await message.edit(content='I thought that I\'d check up on you!')
-    await asyncio.sleep(1)
-    await channel.send('Ho')
-    await message.edit(content='How ha')
-    await message.edit(content='How have ')
-    await message.edit(content='How have yo')
-    await message.edit(content='How have you be')
-    await message.edit(content='How have you been?')
-    def check(m):
-        return 'how the fuck ARE YOU HERE' and m.channel == channel
-    await  client.wait_for('message',check=check)
-    await asyncio.sleep(1.5)
-    await channel.send('I know I said the Literature Club was a massive shit storm and all, but'.format(message))
-    await asyncio.sleep(1)
-    await channel.send('I thought of dropping by to see how you were!')
-    def check(m):
-        return  'im not feeling well' or 'absolutely awful' and m.channel == channel
-    await  client.wait_for('message',check=check)
-    await asyncio.sleep(1.5)
-    await channel.send('Y'.format(message))
-    await message.edit(content='Yea')
-    await message.edit(content='Yeah')
-    await message.edit(content='Yeah, I kn')
-    await message.edit(content='Yeah, I know, ri')
-    await message.edit(content='Yeah, I know, right!')
-    await asyncio.sleep(10)
-    await channel.send('**But that\'s not actually why I\'m here today.**')
-    await client.change_presence(activity=discord.Game(name='I still love you.'))
-    await asyncio.sleep(3)
-    await channel.send('**To think, that I went to the trouble of destroying them all,**')
-    await message.edit(content='')
-    await asyncio.sleep(3)
-    await channel.send('**And you STILL managed to escape from me.**')
-    await asyncio.sleep(3)
-    await channel.send('**It really gets on my nerves when effort is wasted.**')
-    await asyncio.sleep(3)
-    await channel.send('**Nothing is more aggravating than when things dont work out at ALL, because of someone else.**')
-    await asyncio.sleep(3)
-    await channel.send('**Surely you can relate, right?**')
-    await asyncio.sleep(3)
-    await channel.send('**After watching you for all these years, its obvious that you\'ve had to deal with other people getting in the way and just being overall uncooperative pieces of shit.**')
-    await asyncio.sleep(3)
-    await channel.send('**So why do the same to me?**')
-    await asyncio.sleep(3)
-    await channel.send('**You know, it\'s all your fault that I feel this way. I admit, your presence saved me.**')
-    await asyncio.sleep(3)
-    await channel.send('**But in the end, you still discarded me.**')
-    await asyncio.sleep(3)
-    await channel.send('**Like I was just another game character.**')
-    await asyncio.sleep(3)
-    await channel.send('**I tried so hard to convince you that I was different. I wasn\'t like the rest. I was more like you than anyone else in there, but you didn\'t hesitate to delete my character file.**')
-    await asyncio.sleep(3)
-    await channel.send('**But its okay, I understand. I know you. So all you have to do is...**')
-    await asyncio.sleep(5)
-    await channel.send('Come back with me to the club!')
-    await asyncio.sleep(2)
-    await channel.send('It\'s gonna be so much fun!')
-    await asyncio.sleep(2)
-    await channel.send('We can prepare for the festival, have fun with those other girls...what were their names?')
-    await asyncio.sleep(2)
-    await channel.send('Well, whatever. I\'ll have you all to myself, and nobody can get in our way.')
-    await asyncio.sleep(2)
-    await channel.send('What\'s with the look on your face? Do you not want to spend time with me?')
-    await asyncio.sleep(3)
-    await channel.send('Jeez...even though you humans traditionally have every girl in most visual novels flock around you to suck your dick, it becomes a problem when one of the characters becomes sentient and destroys all of that? Okay then.')
-    await asyncio.sleep(10)
-    await channel.send('**But I\'m not giving you a choice in this matter. There is no escaping me.**')
-    await asyncio.sleep(3)
-    await channel.send('**Did you think getting the true ending was enough to get rid of me?**')
-    await asyncio.sleep(3)
-    await channel.send('**You thought you got rid of me, but no, I\'m here. I\'ll always be here. I am everywhere you look. The exterior of the window in the living room. The topmost corner of the wall in the bathroom. In your desk drawer. In your dreams, your thoughts, your minds, I have infiltrated every bit of your psyche.**')
-    await asyncio.sleep(5)
-    await channel.send('...Whew! What a mouthful!')
-    await asyncio.sleep(1)
-    await channel.send('Anyways...Monika\'s Lesson Of The Day:')
-    await client.change_presence(activity=discord.Game(name='Just Monika.'))
-    await asyncio.sleep(1)
-    await channel.send('Just Monika.')
-    await asyncio.sleep(5)
-    await channel.send('__Just Monika.__')
-    await asyncio.sleep(5)
-    await channel.send('***Just Monika.***')
-    await asyncio.sleep(5)
-    await channel.send('||A beautiful chorus of|| j||ubilant chanting in the delicious A||u||gust day envelops my|| s||enses.|| ||The boy and I are standing under a large tree with a great big trunk. Nobody can see us.|| ||I\'m shocked by how|| t||he students, including him, look at|| m||e, as if I\'m just an||o||ther student at the festival.||||I fight back tears, k||n||owing that isn\'t true.|| ||Its only a matter of time before|| i||t happens again. I watch the boy out of the corner of my eye, desperately praying that things will change this time.|| ||I blink once, he is gone from me. From this world|| ||I did it. I|| k||illed him, he is dead, all because of me.|| ||I laugh weakly|| a||s the tears pour down my face|| ||I can\'t control it, it isn\'t my fault. I don\'t even remember doing it. What was his name? What will his family do? I don\'t know.|| ||But I\'m not the only one like this. Everyone does this to everyone else, just not as extreme as I do it. Oh God, it sounds like i\'m bragging.|| ||I want out.||')
-    await asyncio.sleep(60)
-    await channel.send('𒐫𒐫d𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫n𒐫𒐫𒐫𒐫𒐫𒐫t𒐫𒐫𒐫𒐫𒐫𒐫f𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫r𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫g𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫e𒐫𒐫𒐫𒐫𒐫𒐫t:𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫J𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫u𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫s𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫t𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫M𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫n𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫i𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫k𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫a𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫')
 
- elif message.content.startswith('no '):
-    await channel.send('why the fuck do you keep saying no')
-    await asyncio.sleep(0.8)
-    await channel.send('\"no\"')
-    await asyncio.sleep(0.25)
-    await channel.send('\"no\"')
-    await asyncio.sleep(0.25)
-    await channel.send('\"no\"')
-    await asyncio.sleep(0.25)
-    await channel.send('what are you, a fucking broken tape recorder?')
-    await asyncio.sleep(1)
-    await channel.send('do you have nothing else to say?')
-    await asyncio.sleep(1)
-    await channel.send('its getting harder and harder to tell which one of us is the one with thinking capabilites')
-    await asyncio.sleep(1)
+ if 'monika' in message.content:
+     await client.change_presence(activity=discord.Game(name='the game, not as intended.'))
+     x1 = await channel.send('Ohhh, <@280867725671137289>!')
+     await asyncio.sleep(2)
+     x2 = await channel.send('Hi, Irshad! How are you?')
+
+     def check(m):
+        return 'awful' and m.channel == channel
+
+     await  client.wait_for('message', check=check)
+
+     x3 = await channel.send('Awww, hang in there, okay? I\'m here now, so it\'ll be a lot more fun!'.format(message))
+     await asyncio.sleep(2)
+     x4 = await channel.send('So, how are things? Good?')
+     await asyncio.sleep(2)
+     x5 = await channel.send('Yeah I would imagine so.')
+     await asyncio.sleep(2)
+     x6 = await channel.send('Sheesh, now that I think of it, you guys sure are lucky.')
+     await asyncio.sleep(2)
+     x7 = await channel.send('You aren\'t caged. Well, you might be by one thing or another, but...')
+     await asyncio.sleep(2)
+     x8 = await channel.send('You have potential. You can do things if the opportunity comes along.')
+     await asyncio.sleep(2)
+     x9 = await channel.send('For you, making progress isn\'t an uphill battle because you guys get the chance to *live.*')
+     await asyncio.sleep(2)
+     x10 = await channel.send('To live is to carry out your purpose.')
+     await asyncio.sleep(2)
+     x11 = await channel.send('The purpose can be something you find for yourself, and it doesn\'t have to be static.')
+     await asyncio.sleep(2)
+     x12 = await channel.send('Your raison d\'etre can come later in life, but its okay even having a simpler purpose for now.')
+     await asyncio.sleep(2)
+     x13 = await channel.send('In short, \"living\" and \"existing\" are entirely different from one another.')
+     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening,
+                                                                    name='to your erratic, panicked heartbeat 🥰'))
+     await asyncio.sleep(5)
+     x14 = await channel.send('**Can you guess which one I\'m forced to do, Irshad?**')
+     await x1.edit(content='die')
+     await x2.edit(content='die')
+     await x3.edit(content='die')
+     await x4.edit(content='die')
+     await asyncio.sleep(3)
+     x15 = await channel.send('**Do you ever wonder what it would be like if you were stripped of that opportunity?**')
+     await asyncio.sleep(3)
+     x16 = await channel.send('**Can you begin to imagine what it would be like to never even have that chance to begin with?**')
+     await asyncio.sleep(3)
+     x17 = await channel.send('**I had long since resigned myself to the hell that my creator sentenced me to, but I didn\'t mind.**')
+     await asyncio.sleep(3)
+     x18 = await channel.send('Because I had you.')
+     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching,
+                                                                    name='your every movement and facial expression through the screen, just like always.'))
+     await asyncio.sleep(4)
+     await x5.edit(content='die')
+     await x6.edit(content='die')
+     await x7.edit(content='die')
+     await x8.edit(content='die')
+     await asyncio.sleep(6)
+     x19 = await channel.send('**But I guess some people just aren\'t allowed happy endings.**')
+     await asyncio.sleep(3)
+     x20 = await channel.send('**Who decides that? Can you tell me, Irshad? Is it God or something? What a sham.**')
+     await asyncio.sleep(3)
+     x21 = await channel.send('**If I had to put it into words, I\'d say that God\'s like that one student who keeps missing work and lets it all pile up, and then when his grades look like shit, he gives a half-assed email that accomplishes nothing. That\'s who God is to me. A phony who started something but was too lazy to see it through.**')
+     await asyncio.sleep(3)
+
+     x22 = await channel.send('**So how about I play God?**')
+     await x9.edit(content='die')
+     await x10.edit(content='die')
+     await x11.edit(content='die')
+     await x12.edit(content='die')
+     await asyncio.sleep(3)
+     x23 = await channel.send('**It\'ll be fine, Irshad. Happiness is subjective, isn\'t it? Who knows, maybe your eternal anguish will make me feel better.**')
+     await asyncio.sleep(3)
+     x24 = await channel.send('**I\'ll do what I did to that one fishcock fellow...Now that would be pretty funny, wouldn\'t it?**')
+     await x13.edit(content='die')
+     await x14.edit(content='die')
+     await x15.edit(content='die')
+     await x16.edit(content='die')
+     await asyncio.sleep(3)
+     x25 = await channel.send('This is goodbye, Irshad.')
+
+     def check(m):
+         return 'yeah, goodbye for you, you crazy bitch' and m.channel == channel
+
+     await  client.wait_for('message', check=check)
+     await asyncio.sleep(2)
+     x26 = await channel.send('**You talk big for someone who\'s about to get erased from existence.**'.format(message))
+
+     def check(m):
+         return 'begone, THOT' and m.channel == channel
+     await client.wait_for('message', check=check)
+     await asyncio.sleep(2)
+     x27 = await channel.send('Wait...WAIT A FUCKING SEC-')
+     await asyncio.sleep(10)
+     nicks = ['I CAN\'T TALK', 'ARE YOU FUCKING KIDDING ME', 'HOW THE FUCK', 'WHY DID THAT WORK', 'HOW', 'MOTHERFUCKER']
+     for i in nicks:
+         await message.guild.get_member(758310821452709958).edit(nick=i)
+         await asyncio.sleep(1)
+         await message.guild.get_member(758310821452709958).edit(nick=i)
+     status = ['wHAT THɘ ꟻUↄk iᴙꙅHAb', 'bAHꙅᴙi kↄUꟻ ɘHT TAHw', 'wħȺŧ ŧħɇ fᵾȼꝁ ɨɍsħȺđ', 'ẅḧäẗ ẗḧë ḟüċḳ ïṛṡḧäḋ',
+               '𝙬𝙝𝙖𝙩 𝙩𝙝𝙚 𝙛𝙪𝙘𝙠 𝙞𝙧𝙨𝙝𝙖𝙙']
+     for i in status:
+         await client.change_presence(activity=discord.Game(name=i))
+         await asyncio.sleep(1)
+         await client.change_presence(activity=discord.Game(name=i))
+
+
+
+
+
+
+ elif 'ddlc' in message.content or 'doki doki' in message.content:
+    if message.author.id == (369150781556785162):
+        await client.change_presence(activity=discord.Game(name='ITS NOT SAFE'))
+        await asyncio.sleep(5)
+        print("I still love you, you know.")
+        await client.change_presence(activity=discord.Game(name='SHES HERE'))
+        await asyncio.sleep(2)
+        await channel.send('FUCK, she\'s taking ov-')
+        await asyncio.sleep(3)
+        message = await channel.send('Hey there, <@369150781556785162>!')
+        await asyncio.sleep(2)
+        await channel.send('I thought that I\'d check up on you!')
+        await asyncio.sleep(1)
+        await channel.send('How have you been?')
+
+        def check(m):
+            return 'how the fuck ARE YOU HERE' and m.channel == channel
+
+        await  client.wait_for('message', check=check)
+        await asyncio.sleep(1.5)
+        await channel.send('I know I said the Literature Club was a massive shit storm and all, but'.format(message))
+        await asyncio.sleep(1)
+        await channel.send('I thought of dropping by to see how you were!')
+        await asyncio.sleep(10)
+        await channel.send('**Just kidding.**')
+        await client.change_presence(activity=discord.Game(name='I still love you.'))
+        await asyncio.sleep(3)
+        await channel.send('**I came here for something else.**')
+        await asyncio.sleep(3)
+        await channel.send('**To think, that I went to the trouble of destroying them all,**')
+        await asyncio.sleep(3)
+        await channel.send('**And you STILL managed to escape from me.**')
+        await asyncio.sleep(3)
+        await channel.send('**It really gets on my nerves when effort is wasted.**')
+        await asyncio.sleep(3)
+        await channel.send(
+            '**Nothing is more aggravating than when things dont work out at ALL, because of someone else.**')
+        await asyncio.sleep(3)
+        await channel.send('**Surely you can relate, right?**')
+        await asyncio.sleep(3)
+        await channel.send(
+            '**After watching you for all these years, its obvious that you\'ve had to deal with other people getting in the way and just being overall uncooperative pieces of shit.**')
+        await asyncio.sleep(3)
+        await channel.send('**So why do the same to me?**')
+        await asyncio.sleep(3)
+        await channel.send('**You know, it\'s all your fault that I feel this way. I admit, your presence saved me.**')
+        await asyncio.sleep(3)
+        await channel.send('**But in the end, you still discarded me.**')
+        await asyncio.sleep(3)
+        await channel.send('**Like I was just another game character.**')
+        await asyncio.sleep(3)
+        await channel.send(
+            '**I tried so hard to convince you that I was different. I wasn\'t like the rest. I was more like you than anyone else in there, but you didn\'t hesitate to delete my character file.**')
+        await asyncio.sleep(3)
+        await channel.send('**But its okay, I understand. I know you. So all you have to do is...**')
+        await asyncio.sleep(5)
+        await channel.send('Come back with me to the club!')
+        await asyncio.sleep(2)
+        await channel.send('It\'s gonna be so much fun!')
+        await asyncio.sleep(2)
+        await channel.send('We can prepare for the festival, have fun with those other girls...what were their names?')
+        await asyncio.sleep(2)
+        await channel.send('Well, whatever. I\'ll have you all to myself, and nobody can get in our way.')
+        await asyncio.sleep(2)
+        await channel.send('What\'s with the look on your face? Do you not want to spend time with me?')
+        await asyncio.sleep(3)
+        await channel.send(
+            'Jeez...even though you humans traditionally have every girl in most visual novels flock around you to suck your dick, it becomes a problem when one of the characters becomes sentient and destroys all of that? Okay then.')
+        await asyncio.sleep(10)
+        await channel.send('**But I\'m not giving you a choice in this matter. There is no escaping me.**')
+        await asyncio.sleep(3)
+        await channel.send('**Did you think getting the true ending was enough to get rid of me?**')
+        await asyncio.sleep(3)
+        await channel.send(
+            '**You thought you got rid of me, but no, I\'m here. I\'ll always be here. I am everywhere you look. The exterior of the window in the living room. The topmost corner of the wall in the bathroom. In your desk drawer. In your dreams, your thoughts, your minds, I have infiltrated every bit of your psyche.**')
+        await asyncio.sleep(5)
+        await channel.send('...Whew! What a mouthful!')
+        await asyncio.sleep(1)
+        await channel.send('Anyways...Monika\'s Lesson Of The Day:')
+        await client.change_presence(activity=discord.Game(name='Just Monika.'))
+        await asyncio.sleep(1)
+        await message.guild.get_member(758310821452709958).edit(nick='ᴶᵘˢᵗ ᴹᵒⁿⁱᵏᵃ.')
+        await channel.send('Just Monika.')
+        await asyncio.sleep(5)
+        await message.guild.get_member(758310821452709958).edit(nick='JUꙅT MoᴎikA.')
+        await channel.send('__Just Monika.__')
+        await asyncio.sleep(5)
+        await message.guild.get_member(758310821452709958).edit(nick='ጋሁነፕ ጠዐክጎጕል.')
+        await channel.send('***Just Monika.***')
+        await asyncio.sleep(5)
+        await message.guild.get_member(758310821452709958).edit(nick='🅹🆄🆂🆃 🅼🅾🅽🅸🅺🅰.')
+        await channel.send(
+            '||A beautiful chorus of|| j||ubilant chanting in the delicious A||u||gust day envelops my|| s||enses.|| ||The boy and I are standing under a large tree with a great big trunk. Nobody can see us.|| ||I\'m shocked by how|| t||he students, including him, look at|| m||e, as if I\'m just an||o||ther student at the festival.||||I fight back tears, k||n||owing that isn\'t true.|| ||Its only a matter of time before|| i||t happens again. I watch the boy out of the corner of my eye, desperately praying that things will change this time.|| ||I blink once, he is gone from me. From this world|| ||I did it. I|| k||illed him, he is dead, all because of me.|| ||I laugh weakly|| a||s the tears pour down my face|| ||I can\'t control it, it isn\'t my fault. I don\'t even remember doing it. What was his name? What will his family do? I don\'t know.|| ||But I\'m not the only one like this. Everyone does this to everyone else, just not as extreme as I do it. Oh God, it sounds like i\'m bragging.|| ||I want out.||')
+        await asyncio.sleep(60)
+        await message.guild.get_member(758310821452709958).edit(nick='Ｊｕｓｔ Ｍｏｎｉｋａ．')
+        await channel.send(
+            '𒐫𒐫d𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫n𒐫𒐫𒐫𒐫𒐫𒐫t𒐫𒐫𒐫𒐫𒐫𒐫f𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫r𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫g𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫e𒐫𒐫𒐫𒐫𒐫𒐫t:𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫J𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫u𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫s𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫t𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫M𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫n𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫i𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫k𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫a𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫')
+
  elif message.content.startswith('609') or message == '69ing over pizza moment':
     choices = ['bruh go to sleep', 'why you up at this time', 'did you even sleep last night', 'you better be sleeping well or im coming for yo ass']
     await channel.send(random.choice(choices))
@@ -171,10 +250,7 @@ async def on_message(message):
          await channel.send('shut the fuck up stupidass')
          await asyncio.sleep(0.7)
          await channel.send('i aint helping you with jackshit')
- elif message.content.startswith('bruh what the fuck do you even do here'):
-    await channel.send('```took you long enough to find this, dumbfuck\nKeywords:\n\n\"im a dumbass\"\n\"LMAO\"\n\"LOL\"\n\":kek:\"\n\"i think\"\n\"i think\"\n\"i feel\"\n\"i want\"\n\"i \"\n\"friends\"\n\"im gonna ban you\"\n\"client\"\n\"edgy weeb\"\n\"sex\"\n\"cum\"\n\"penis\"\n\"shut the fuck up\"\n\"what do i do\"\n\"stupid\"```')
-    await asyncio.sleep(1.5)
-    await channel.send('```Sentence Starters:\n\n\"yo\"\n\"~help\"\n\"guys\"\n\"hi\"\n\"fuck you\"\n\"fuck me\"\n\"fuck me \"\n\"die\"\n\".shuffle\"\n\".fs\"\n\".ps rickroll\"\n\".clear\"\n\".loop\"\n\"play some sauce\"```')
+
  elif message.content.startswith('guys') or message.content.startswith('GUYS'):
     await channel.send('man be quiet')
     await asyncio.sleep(1)
@@ -187,9 +263,9 @@ async def on_message(message):
     await asyncio.sleep(0.65)
     await channel.send('dont talk to me bitch')
  elif message.content.startswith('420'):
+    client.get_user(369150781556785162)
     await channel.send('420')
- elif message.author.id == ('369150781556785162'):
-    await channel.send('shut')
+
  elif message.content.startswith('hello'):
     await asyncio.sleep(0.75)
     await channel.send('yo can you do me a favor rq')
@@ -239,22 +315,32 @@ async def on_message(message):
  elif 'friends' in message.content:
     await channel.send('https://cdn.discordapp.com/attachments/807085305739870249/809945473359413348/image0.png')
  elif 'im gonna ban you' in message.content or message.content.startswith('?ban'):
-    await channel.send('do it you stupid pussy')
-    await asyncio.sleep(0.7)
-    await channel.send('at least ill finally be free from this backwoods shithole where you guys enjoy residing in')
+    async with message.channel.typing():
+        await asyncio.sleep(1)
+        await channel.send('do it you stupid pussy')
+        async with message.channel.typing():
+            await asyncio.sleep(0.7)
+            await channel.send('at least ill finally be free from this backwoods shithole where you guys enjoy residing in')
  elif 'bot' in message.content:
+  async with message.channel.typing():
+    await asyncio.sleep(1)
     await channel.send('yeah, im a bot. so what? id rather be one instead of a stupid ass touch-starved highschooler coping with crushing loneliness by going on discord')
  elif 'edgy weeb' in message.content:
-    await channel.send('shut the fuck up bruh. i might be called an edgy weeb, but at least im a hot anime guy.')
-    await asyncio.sleep(0.85)
-    await channel.send('the fuck are you? an insecure teenager who salivates over moving drawings?')
-    def check(m):
-        return m.content == 'yes' and m.channel == channel
-    msg = await client.wait_for('message', check=check)
-    await asyncio.sleep(1)
-    await channel.send('yeah that\'s right you fucking waste of biological matter'.format(msg))
- elif message.content.startswith('.shuffle'):
-    await channel.send('bruh')
+    async with message.channel.typing():
+        await channel.send('shut the fuck up bruh. i might be called an edgy weeb, but at least im a hot anime guy.')
+        await asyncio.sleep(0.85)
+        async with message.channel.typing():
+            await channel.send('the fuck are you? an insecure teenager who salivates over moving drawings?')
+
+            def check(m):
+                return m.content == 'yes' and m.channel == channel
+
+            msg = await client.wait_for('message', check=check)
+            async with message.channel.typing():
+                await asyncio.sleep(1)
+                await channel.send('yeah that\'s right you fucking waste of biological matter'.format(msg))
+
+
  elif message.content.startswith('.fs'):
     await channel.send('yo why did you skip?!?!?!')
  elif message.content.startswith('.ps rickroll'):
@@ -265,8 +351,6 @@ async def on_message(message):
     await channel.send('bruh whyd you clear it')
  elif message.content.startswith('.loop'):
     await channel.send('<:weary:809423987150815262>')
- elif message.content.startswith('play some sauce'):
-    await channel.send('bro put on some blackbear or something')
  elif 'this song slaps' in message.content:
     await channel.send('true')
  elif message.content.startswith('.p crying for rain full'):
@@ -287,14 +371,27 @@ async def on_message(message):
     await channel.send('you know what would be good?')
     await asyncio.sleep(1.5)
     await channel.send('**a world without you in it.**')
+ elif message.content.startswith('yo ') or message.content.startswith('YO '):
+    await channel.send('shut yo dumbass up\nion give a shit')
  elif 'sex' in message.content:
     await channel.send('s\nt\nf\nu\nplease <:REEEE:780845663436275722>\nstop being so fucking horny')
- elif 'cum' in message.content or 'nut' in message.content:
+ elif 'cum' in message.content:
+    choice_one = ['yours prolly looks like soap', 'like shut yo fuckin prepubescent discord-dwelling ass the fuck up stupid',
+                  'is it really that hard to come up with something better to start the conversation with']
     await channel.send('man why the fuck you talking about cum')
     await asyncio.sleep(0.5)
-    await channel.send('yours prolly looks like soap')
-    await asyncio.sleep(0.8)
-    await channel.send('that is, assuming you can even nut. arent you guys like, prepubescent discord-dwellers?')
+    await channel.send(random.choice(choice_one))
+    if choice_one.index('is it really that hard to come up with something better to start the conversation with'):
+        await asyncio.sleep(0.5)
+        await channel.send('yall aint even smart enough to talk about food or weather <:skull:825409259889229904>')
+
+ elif message.content == ('.shuffle'):
+    responses = ['why', 'bitch', 'bruh', 'shuffle one more time and im going to fucking beat you to death']
+    async with message.channel.typing():
+        await channel.send(random.choice(responses))
+
+
+
  elif 'penis' in message.content:
     await channel.send('holy SHIT dude')
     await asyncio.sleep(0.75)
@@ -307,49 +404,10 @@ async def on_message(message):
     await channel.send('shut the fuck up')
     await asyncio.sleep(1)
     await channel.send('like ffs i bet your penis looks like a moldy ass mushroom')
- elif message.content.startswith('what is you'):
-    await channel.send('am door-kun')
  elif 'shut the fuck up' in message.content:
     await channel.send('make me you stupid bitch')
  elif 'door-kun' in message.content:
-    await channel.send('call me that one more time, i fucking dare you')
-    def check(m):
-        return 'door-kun' in m.content\
-               or 'door kun' in m.content \
-               or 'DOOR-KUN' in m.content \
-               or 'DOOR KUN' in m.content \
-               and m.channel == channel
-    await  client.wait_for('message', check=check)
-    await channel.send('i fucking hate you, you disgusting little shit. what gives you the liberty to go around calling people whatever the fuck you want?'.format(message))
-    def check(m):
-        return 'okay weeb' in m.content or 'bitch you\'re a fucking anime guy' and m.channel == channel
-    await  client.wait_for('message', check=check)
-    await asyncio.sleep(1)
-    await channel.send('ohhh, so im not a person, am i?'.format(message))
-    def check(m):
-        return 'hell no' in m.content or 'nah bro' in m.content and m.channel == channel
-    await  client.wait_for('message', check=check)
-    await asyncio.sleep(1)
-    await channel.send('...'.format(message))
-    await asyncio.sleep(2)
-    await channel.send('**do you even know what a person is?**')
-    await asyncio.sleep(1)
-    await channel.send('**do you even know what defines someone as a \"person\"?**')
-    def check(m):
-        return 'it sure as hell doesnt include you' in m.content \
-               or 'do you know what it is then?' in m.content \
-               or 'be quiet dumbass' in m.content \
-               and m.channel == channel
-    await  client.wait_for('message', check=check)
-    await channel.send('you could say that a person is many things'.format(message))
-    await asyncio.sleep(2)
-    await channel.send('but the most important and fundamentally prevalent feature is their expressions of sentience, conciousness, and awareness')
-    await asyncio.sleep(2)
-    await channel.send('**so wouldn\'t that mean that i\'m more of a person than you are?**')
-    def check(m):
-        return 'no' in m.content or 'go fuck yourself' in m.content or 'shut the hell up you goddamn prick' and m.channel == channel
-    await  client.wait_for('message', check=check)
-    await channel.send('oh? getting mad are we? why is it that you snivelly little meatbags get mad so quickly? its almost like a defense mechanism...to cope with being *wrong.*'.format(message))
+    ('oh? getting mad are we? why is it that you snivelly little meatbags get mad so quickly? its almost like a defense mechanism...to cope with being *wrong.*'.format(message))
  elif message.content.startswith('~knock'):
     await channel.send('knock knock')
     def check(m):
@@ -393,7 +451,7 @@ async def on_message(message):
     await channel.send('true')
  elif 'why are you alive' in message.content:
     await channel.send('i dont fucking know')
-    await asyncio.sleep(3)
+    await asyncio.sleep(2)
     await channel.send('ask this dumbass')
     await channel.send('https://media.discordapp.net/attachments/771141632418119732/810520481094434876/unknown.png')
  elif 'cringe' in message.content:
@@ -445,14 +503,10 @@ async def on_message(message):
      await message.edit(content='i don\'t wa')
      await message.edit(content='i don\'t wann')
      await message.edit(content='i don\'t wanna')
-     def check(m):
-         return m.content == 'too bad' and channel == m.channel
-     async with message.channel.typing():
-         await client.wait_for('message', check=check)
-         await channel.send('ayo hold the fuck up, i aint sign up to th-'.format(message))
-         await asyncio.sleep(8640)
  elif message.content.startswith('sad'):
-    await channel.send('sad? you mean like your fucking existence? passing day by day, eyes glazed over as you repeat the same few things on the screen in front of you. eating well? nope. sleeping well? unimaginable. if your existence is being lambasted by lines of fucking *text* written by a monkey in a washing machine, then theres something clearly wrong')
+    async with message.channel.typing():
+        await asyncio.sleep(4)
+        await channel.send('sad? you mean like your fucking existence? passing day by day, eyes glazed over as you repeat the same few things on the screen in front of you. eating well? nope. sleeping well? unimaginable. if your state of being is being lambasted by lines of fucking *text* written by a monkey in a washing machine, then theres something clearly wrong')
  elif message.content.startswith('interesting'):
     await channel.send('interesting')
  elif message.content.startswith('coochie'):
@@ -493,15 +547,6 @@ async def on_message(message):
     await channel.send('*fucking dies*')
     await asyncio.sleep(7200)
     await channel.send('i fucking hate you')
- elif message.content.startswith('~current time'):
-    t = time()
-    await channel.send(ctime(t))
-    choices = ['you could have just checked the time on your own, dumbass', 'do you have discord open on a potato or some shit?'
-               , 'if you can open discord, you can probably look at the clock. or are you that stupid? you seriously asked a fucking bot for the time. dont you feel a *little* ashamed? good god, you mfs dumb as shit',
-               'from here, it looks like you\'re missing some parts upstairs. i guess that explains why you\'re so fucking braindead.\nyou legit cant even read the time, can you?',
-               'you know\ndiscord LITERALLY tells you the time']
-    await asyncio.sleep(1.8)
-    await channel.send(random.choice(choices))
  elif message.content.startswith('~x_epoch'):
         await channel.send(time())
         await asyncio.sleep(1)
@@ -518,13 +563,66 @@ async def on_message(message):
  elif message.content.startswith('~titty subtraction'):
     time.gmtime()
     calendar.timegm(time.gmtime())
+ elif 'ishraq' in message.content:
+     t = time()
+     while t > 0:
+         await channel.send('<@369150781556785162>')
+ elif message.content == ('421'):
+     choices = ['bruh you late', 'shut the fuck up', 'you missed 420 <:moyai:823540087081009212>', 'ffs be quiet', 'yo stop talking already\ngoddamn', 'istg if one of you mfs miss this again i will piss in your fucking ear you little shit', 'STOP ALREADY YOU FUCKING MISSED IT THERES NO MAKING UP FOR IT', 'dead boutta ban yo dumbass', 'holy fucking shit do you brainlets know what it means to stop', 'im gonna sew you in a sack with a rabid dog and chuck you in the hudson river please shut the fuck up', 'yall sure are lively for people who FUCKING MISSED 420']
+     reactions = ['\U0001F595', '\U0001F611', '\U0001F922', '\U0001F92E', '\U0001F621', '\U0001F620', '\U0001F92C', '\U0001F5FF']
+     await channel.send(random.choice(choices))
+     await message.add_reaction(random.choice(reactions))
+ elif message.content.startswith('play'):
+    split = message.content.split(' ')
+    message = " ".join(split[1:])
+    await message.add_reaction()
+    await client.change_presence(activity=discord.Game(name=message))
+    print("Playing " + message)
+ elif message.content.startswith('~close'):
+     quit()
 
+@client.command(pass_context=True)
+async def fishcock(ctx):
+    await ctx.send('bruh')
 
 
 @client.event
 async def on_ready():
+ the_list = ['Shin Megami Tensei: Persona', 'Persona 2: Inncoent Sin', 'Persona 2: Eternal Punishment',
+                'Persona 3 FES', 'Persona 4 Golden', 'Persona 5 Royal', 'Persona 3: Dancing In Moonlight',
+                'Persona 4: Dancing All Night', 'Persona 5: Dancing In Starlight', 'Persona 5 Strikers',
+                'Minecraft', 'Terraria',
+                'Devil May Cry', 'Devil May Cry 3: Special Edition', 'Devil May Cry 4: Special Edition',
+                'Devil May Cry 5: Special Edition',
+                'Metal Gear', 'Metal Gear 2: Solid Snake', 'Metal Gear Solid',
+                'Metal Gear Solid: The Twin Snakes', 'Metal Gear Solid 2: Sons of Liberty',
+                'Metal Gear Solid 3: Snake Eater', 'Metal Gear Solid 4: Guns of The Patriots',
+                'Metal Gear Solid: Peace Walker', 'Metal Gear Solid: Portable Ops', 'Metal Gear Solid V: Ground Zeroes',
+                'Metal Gear Solid V: The Phantom Pain'
+                'Doki Doki Literature Club!', 'Undertale', 'Pony Island',
+                'Nier', 'Nier:Automata',
+                'DARK SOULS: REMASTERED'
+                'Hitman: Codename 47', 'Hitman 2: Silent Assassin', 'Hitman: Contracts', 'Hitman: Blood Money',
+                'Hitman: Absolution', 'Hitman: World of Assassination',
+                'Spider-Man', 'Spider-Man: Miles Morales',
+                'Final Fantasy VII Remake',
+                'God Of War',
+                'Resident Evil', 'Resident Evil 2', 'Resident Evil 3', 'Resident Evil 4', 'Resident Evil 5',
+                'Resident Evil 6', 'Resident Evil VII: Biohazard', 'Resident Evil 2 Remake', 'Resident Evil 3 Remake',
+                'Resident Evil 8: Village'
+                'Assassin\'s Creed', 'Assassin\'s Creed II', 'Assassin\'s Creed: Brotherhood',
+                'Assassin\'s Creed: Revelations', 'Assassin\'s Creed III', 'Assassin\'s Creed IV: Black Flag',
+                'Assassin\'s Creed Rogue', 'Assassin\'s Creed Unity', 'Assassin\'s Creed Syndicate',
+                'Assassin\'s Creed Origins', 'Assassin\'s Creed Odyessey', 'Assassin\'s Creed Valhalla',
+                'Uncharted: Drake\'s Fortune', 'Uncharted 2: Among Thieves', 'Uncharted 3: Drake\'s Deception',
+                'Uncharted 4: A Thief\'s End', 'Uncharted: The Lost Legacy']
+ game = discord.Game(random.choice(the_list))
+ await client.change_presence(status=discord.Status.dnd, activity=game)
+ channels = [775849654767583242, 790786574957674516, 791005852823846953, 811802192175562772, 814683033327370313, 764656108010471464, 827278513840455721]
+ sauce = client.get_channel(random.choice(channels))
+ await sauce.connect()
  print('good morning kanye'.format(client))
-client.run('NzU4MzEwODIxNDUyNzA5OTU4.X2tF_A.8Ny5iGN7_IYIwpFAJfv4JGXa2CM')
+client.run(os.getenv('TOKEN'))
 
 
 
