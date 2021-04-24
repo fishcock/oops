@@ -1,11 +1,15 @@
 import discord
+import pygame.font
+from discord import DMChannel
 import os
+from math import floor
 from discord.ext import commands
 from discord.utils import get
 from dotenv import load_dotenv
 load_dotenv()
 import requests
 import json
+from datetime import datetime
 import time
 import schedule
 import calendar
@@ -15,15 +19,17 @@ from time import gmtime
 from time import time, ctime
 from time import struct_time
 import numpy as np
+import pygame 
+from pygame import display
+import textwrap
 
 client = commands.Bot(command_prefix='~')
 
 @client.event
-async def on_message(message):
+async def on_message(message: discord.Message):
  if message.author == client.user:
     return
  channel = message.channel
-
 
  if 'monika' in message.content:
      await client.change_presence(activity=discord.Game(name='the game, not as intended.'))
@@ -116,6 +122,38 @@ async def on_message(message):
      await client.wait_for('message', check=check)
      await asyncio.sleep(2)
      x27 = await channel.send('Wait...WAIT A FUCKING SEC-')
+     await x1.edit(content='die')
+     await x2.edit(content='die')
+     await x3.edit(content='die')
+     await x4.edit(content='die')
+     await x5.edit(content='die')
+     await x6.edit(content='die')
+     await x7.edit(content='die')
+     await x8.edit(content='die')
+     await x9.edit(content='die')
+     await x10.edit(content='die')
+     await x11.edit(content='die')
+     await x12.edit(content='die')
+     await x13.edit(content='die')
+     await x14.edit(content='die')
+     await x15.edit(content='die')
+     await x16.edit(content='die')
+     await x17.edit(content='die')
+     await x18.edit(content='die')
+     await x19.edit(content='die')
+     await x20.edit(content='die')
+     await x21.edit(content='die')
+     await x22.edit(content='die')
+     await x23.edit(content='die')
+     await x24.edit(content='die')
+     await x25.edit(content='die')
+     await x26.edit(content='die')
+     await x27.edit(content='die')
+
+     cummies = [775849654767583242, 790786574957674516, 791005852823846953, 811802192175562772, 814683033327370313,
+                 764656108010471464, 827278513840455721]
+     nut = client.get_channel(random.choice(cummies))
+     await nut.disconnect()
      await asyncio.sleep(10)
      nicks = ['I CAN\'T TALK', 'ARE YOU FUCKING KIDDING ME', 'HOW THE FUCK', 'WHY DID THAT WORK', 'HOW', 'MOTHERFUCKER']
      for i in nicks:
@@ -128,10 +166,6 @@ async def on_message(message):
          await client.change_presence(activity=discord.Game(name=i))
          await asyncio.sleep(1)
          await client.change_presence(activity=discord.Game(name=i))
-
-
-
-
 
 
  elif 'ddlc' in message.content or 'doki doki' in message.content:
@@ -232,9 +266,6 @@ async def on_message(message):
         await channel.send(
             '𒐫𒐫d𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫n𒐫𒐫𒐫𒐫𒐫𒐫t𒐫𒐫𒐫𒐫𒐫𒐫f𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫r𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫g𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫e𒐫𒐫𒐫𒐫𒐫𒐫t:𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫J𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫u𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫s𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫t𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫M𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫o𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫n𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫i𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫k𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫a𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫')
 
- elif message.content.startswith('609') or message == '69ing over pizza moment':
-    choices = ['bruh go to sleep', 'why you up at this time', 'did you even sleep last night', 'you better be sleeping well or im coming for yo ass']
-    await channel.send(random.choice(choices))
  elif message.content.startswith('?av'):
     choices = ['<:hehe:808740229946540113>',
                '<:fantasy:808739417429639198>',
@@ -255,16 +286,6 @@ async def on_message(message):
     await channel.send('man be quiet')
     await asyncio.sleep(1)
     await channel.send('i deadass dont care bruv')
- elif message.content.startswith('hi '):
-    await asyncio.sleep(0.7)
-    await channel.send('bye')
- elif message.content.startswith('HI '):
-    await channel.send('shut the fuck up')
-    await asyncio.sleep(0.65)
-    await channel.send('dont talk to me bitch')
- elif message.content.startswith('420'):
-    client.get_user(369150781556785162)
-    await channel.send('420')
 
  elif message.content.startswith('hello'):
     await asyncio.sleep(0.75)
@@ -389,9 +410,9 @@ async def on_message(message):
     responses = ['why', 'bitch', 'bruh', 'shuffle one more time and im going to fucking beat you to death']
     async with message.channel.typing():
         await channel.send(random.choice(responses))
-
-
-
+ elif message.content.startswith('tae'):
+     if message.author.id == (676949954362605573):
+         await channel.send('bruh shut yo hoe ass up an stop chasing after some overseas mfs who like to dance')
  elif 'penis' in message.content:
     await channel.send('holy SHIT dude')
     await asyncio.sleep(0.75)
@@ -408,31 +429,6 @@ async def on_message(message):
     await channel.send('make me you stupid bitch')
  elif 'door-kun' in message.content:
     ('oh? getting mad are we? why is it that you snivelly little meatbags get mad so quickly? its almost like a defense mechanism...to cope with being *wrong.*'.format(message))
- elif message.content.startswith('~knock'):
-    await channel.send('knock knock')
-    def check(m):
-        return 'who\'s there' in m.content\
-               or 'whos there' in m.content \
-               or 'who is there' in m.content \
-               or 'who the fuck is it' in m.content \
-               and m.channel == channel
-    await  client.wait_for('message', check=check)
-    await channel.send('who do you think dumbass'.format(message))
-    await asyncio.sleep(1)
-    await channel.send('ever notice what my name is?')
-    def check(m):
-        return 'oh' in m.content \
-               or 'oop' in m.content \
-               or 'i see' in m.content \
-               and m.channel == channel
-    await  client.wait_for('message', check=check)
-    choices = ['you a real smart mf, you know that?',
-               'holy shit dude. so *this* is the boundless potential of the human mind!',
-               'fucking dumbass',
-               'anyone ever tell you how smart you are']
-    await channel.send(random.choice(choices).format(message))
-    await asyncio.sleep(1)
-    await channel.send('you\'re really gonna make a knock knock joke with a fucking *door* and ask who it is?')
  elif 'what anime' in message.content:
     await channel.send('watch banana fish\nyou wont cry *that* much')
     def check (m):
@@ -547,6 +543,10 @@ async def on_message(message):
     await channel.send('*fucking dies*')
     await asyncio.sleep(7200)
     await channel.send('i fucking hate you')
+ elif message.author.id == (706175179709218867):
+     reactions = ['\U0001F595', '\U0001F611', '\U0001F922', '\U0001F92E', '\U0001F621', '\U0001F620', '\U0001F92C',
+                  '\U0001F5FF']
+     await message.add_reaction(random.choice(reactions))
  elif message.content.startswith('~x_epoch'):
         await channel.send(time())
         await asyncio.sleep(1)
@@ -578,13 +578,70 @@ async def on_message(message):
     await message.add_reaction()
     await client.change_presence(activity=discord.Game(name=message))
     print("Playing " + message)
- elif message.content.startswith('~close'):
-     quit()
 
-@client.command(pass_context=True)
-async def fishcock(ctx):
-    await ctx.send('bruh')
+ await client.process_commands(message)
 
+@client.command(name='torture', pass_context=True)
+async def torture(ctx):
+    victim = int(input("who is it this time?"))
+    user = await client.fetch_user(victim)
+    pain_infliction = ['the faster you respond to this message, the more pathetic you are as a human being',
+                       'die', 'you suck', 'you are going to die alone', 'i am going to torment you like this perpetually',
+                       'i fucked your mom last night', 'made ya look', 'fucking discord-dweller',
+                       'go touch some grass or some shit you fucking loser', 'ew']
+    while True:
+        bruh = input("msg:")
+        await DMChannel.send(user, bruh)
+
+
+@client.command(name='misery', pass_context=True)
+async def misery(ctx):
+    def main():
+        screen = pygame.display.set_mode((640, 480))
+        font = pygame.font.SysFont(None, 18)
+        clock = pygame.time.Clock()
+        color = pygame.Color('dodgerblue2')
+        cum = (pygame.KMOD_ALT and pygame.K_F4)
+        shit = (pygame.KMOD_CTRL + pygame.K_BACKSPACE)
+        text = ''
+
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        print(text)
+                        text = ''
+
+                    elif event.key == shit:
+                        bababoongy = len(text)
+                        text = text[:-int(bababoongy)]
+                    elif event.key == pygame.K_BACKSPACE:
+                        text = text[:-1]
+                    else:
+                        text += event.unicode
+                if event.type == pygame.KEYDOWN and event.key == cum:
+                    running = False
+
+            screen.fill((0, 0, 0))
+            txt_surface = font.render(text, True, color)
+            screen.blit(txt_surface, (50, 100))
+            pygame.display.flip()
+            clock.tick(30)
+
+    if __name__ == '__main__':
+        pygame.init()
+        pygame.font.init()
+        main()
+        pygame.quit()
+
+#await x1.edit(content='die')
+
+@client.command(name='close', pass_context=True)
+async def close(ctx):
+    quit()
 
 @client.event
 async def on_ready():
@@ -615,12 +672,16 @@ async def on_ready():
                 'Assassin\'s Creed Rogue', 'Assassin\'s Creed Unity', 'Assassin\'s Creed Syndicate',
                 'Assassin\'s Creed Origins', 'Assassin\'s Creed Odyessey', 'Assassin\'s Creed Valhalla',
                 'Uncharted: Drake\'s Fortune', 'Uncharted 2: Among Thieves', 'Uncharted 3: Drake\'s Deception',
-                'Uncharted 4: A Thief\'s End', 'Uncharted: The Lost Legacy']
+                'Uncharted 4: A Thief\'s End', 'Uncharted: The Lost Legacy', 'Ghost of Tsushima']
+
+
  game = discord.Game(random.choice(the_list))
  await client.change_presence(status=discord.Status.dnd, activity=game)
- channels = [775849654767583242, 790786574957674516, 791005852823846953, 811802192175562772, 814683033327370313, 764656108010471464, 827278513840455721]
+ channels = [775849654767583242, 790786574957674516, 791005852823846953, 811802192175562772, 814683033327370313,
+             764656108010471464, 827278513840455721]
  sauce = client.get_channel(random.choice(channels))
  await sauce.connect()
+ print(pygame.font.get_fonts())
  print('good morning kanye'.format(client))
 client.run(os.getenv('TOKEN'))
 
